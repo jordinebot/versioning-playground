@@ -24,6 +24,9 @@ jobs:
           author_name: $GITHUB_ACTOR
           author_email: github.action@jordinebot.cat
 
+      - name: Setup git
+        run: git config --global user.email "you@example.com" && git config --global user.name "Your Name"
+
       - name: Install Dependencies
         run: npm ci
 
@@ -35,3 +38,4 @@ jobs:
 
       - name: Bump up
         run: npm run version:bump
+
