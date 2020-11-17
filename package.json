@@ -4,7 +4,8 @@
   "description": "Playground for automated versioning",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "build": "rollup --config",
+    "start": "node public/bundle.js",
     "version:preview": "standard-version --dry-run",
     "version:bump": "standard-version --skip.tag --skip.changelog",
     "version:rc": "standard-version --prerelease rc --skip.tag --skip.changelog",
@@ -13,6 +14,7 @@
   "author": "Jordi Nebot",
   "license": "ISC",
   "devDependencies": {
+    "rollup": "^2.33.2",
     "standard-version": "^9.0.0"
   }
 }
