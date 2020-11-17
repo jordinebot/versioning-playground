@@ -31,5 +31,5 @@ jobs:
     - name: Build package
       run: npm run build
 
-    - name: Install Dependencies
+    - name: Test
       run: npm run test --silent
