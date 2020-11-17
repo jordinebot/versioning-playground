@@ -26,13 +26,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install Dependencies
-      uses: actions/setup-node@v1
       run: npm ci
 
     - name: Build package
-      uses: actions/setup-node@v1
       run: npm run build
 
     - name: Install Dependencies
-      uses: actions/setup-node@v1
       run: npm run test --silent
