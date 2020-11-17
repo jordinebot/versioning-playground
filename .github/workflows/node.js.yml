@@ -5,11 +5,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ develop ]
+    branches: [develop]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,23 +16,23 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use node v${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Use node v${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install Dependencies
-      run: npm ci
+      - name: Install Dependencies
+        run: npm ci
 
-    - name: Build package
-      run: npm run build
+      - name: Build package
+        run: npm run build
 
-    - name: Test
-      run: npm run test --silent
+      - name: Test
+        run: npm run test --silent
 
-    - name: Bump up
-      run: echo "GITHUB_REF = $GITHUB_REF"
-      run: git config --global user.email "github.action@jordinebot.cat"
-      run: git config --global user.name $GITHUB_ACTOR
-      run: npm run version:bump
+      - name: Bump up
+        run: npm run version:bump
+        with:
+          author_name: $GITHUB_ACTOR
+          author_email: github.action@jordinebot.cat
