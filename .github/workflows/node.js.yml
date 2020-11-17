@@ -6,8 +6,6 @@ name: Node.js CI
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
 
 jobs:
   build:
@@ -33,3 +31,6 @@ jobs:
 
     - name: Test
       run: npm run test --silent
+
+    - name: Bump up
+      run: npm run version:bump
