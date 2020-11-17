@@ -33,4 +33,7 @@ jobs:
       run: npm run test --silent
 
     - name: Bump up
+      run: echo "GITHUB_REF = $GITHUB_REF"
+      run: git config --global user.email "github.action@jordinebot.cat"
+      run: git config --global user.name $GITHUB_ACTOR
       run: npm run version:bump
