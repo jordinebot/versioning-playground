@@ -27,12 +27,12 @@ jobs:
 
     - name: Install Dependencies
       uses: actions/setup-node@v1
-    - run: npm ci
+      run: npm ci
 
     - name: Build package
       uses: actions/setup-node@v1
-    - run: npm run build
+      run: npm run build
 
     - name: Install Dependencies
       uses: actions/setup-node@v1
-    - run: npm run test --silent
+      run: npm run test --silent
