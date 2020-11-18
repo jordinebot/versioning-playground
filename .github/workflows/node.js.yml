@@ -37,6 +37,7 @@ jobs:
         run: npm run test --silent
 
       - name: Bump up
-        run: npm run version:bump
-        run: git push origin $GITHUB_REF
+        run: |
+            npm run version:bump
+            git push origin $GITHUB_REF
 
