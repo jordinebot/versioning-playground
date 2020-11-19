@@ -24,7 +24,7 @@ jobs:
 
       - name: Setup git
         env:
-          AUTHOR_NAME: $GITHUB_ACTOR
+          AUTHOR_NAME: Github Actions
           AUTHOR_EMAIL: github.action@jordinebot.cat
         run: git config --global user.email "$AUTHOR_EMAIL" && git config --global user.name "$AUTHOR_NAME"
 
