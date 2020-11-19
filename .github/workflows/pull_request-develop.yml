@@ -1,0 +1,41 @@
+name: Bump up develop
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use node v${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Setup git
+        env:
+          AUTHOR_NAME: Github Actions
+          AUTHOR_EMAIL: github.action@jordinebot.cat
+        run: git config --global user.email "$AUTHOR_EMAIL" && git config --global user.name "$AUTHOR_NAME"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build package
+        run: npm run build
+
+      - name: Test
+        run: npm run test --silent
+
+      - name: Bump up
+        run: |
+            npm run version:bump
+            git push origin $GITHUB_REF
+
