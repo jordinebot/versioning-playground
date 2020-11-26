@@ -6,8 +6,9 @@
   "scripts": {
     "build": "rollup --config",
     "test": "echo '✅ All tests passed' && exit 0",
-    "deploy": "echo '🚀 Deploying to DEV environment...' && exit 0",
+    "deploy": "echo \"🚀 Deploying v$(npm run version:current --silent) to DEV environment...\" && exit 0",
     "start": "node public/bundle.js",
+    "version:current": "node -p \"require('./package.json').version\"",
     "version:preview": "standard-version --dry-run",
     "version:bump": "standard-version --skip.tag --skip.changelog",
     "version:rc": "standard-version --prerelease rc --skip.tag --skip.changelog",
