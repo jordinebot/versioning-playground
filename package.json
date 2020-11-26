@@ -1,11 +1,12 @@
 {
   "name": "versioning-playground",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Playground for automated versioning",
   "main": "index.js",
   "scripts": {
     "build": "rollup --config",
     "test": "echo '✅ All tests passed' && exit 0",
+    "deploy": "echo '🚀 Deploying to DEV environment...' && exit 0",
     "start": "node public/bundle.js",
     "version:preview": "standard-version --dry-run",
     "version:bump": "standard-version --skip.tag --skip.changelog",
