@@ -1,0 +1,32 @@
+name: Deploy Develop
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use node v${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build package
+        run: npm run build
+
+      - name: Test
+        run: npm run test --silent
+
+      - name: Deploy
+        run: echo "🚀 Deploying to DEV environment..."
